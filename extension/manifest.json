@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "Bookit",
+    "version": "1.0",
+
+    "description": "Collects information from marked bookmark folders and then update that to your github profile's readme.md",
+
+    "icons": {
+        "48": "icons/black.png"
+    },
+    
+    "background": {
+        "scripts": ["main.js"],
+        "persistent": false
+    },
+
+    "permissions": [
+        "bookmarks",
+        "tabs"
+    ]
+}
