@@ -3,11 +3,12 @@
 Collects information of your bookmarks in your browser and then update that to your github profile's readme.md automatically. 
 
 Basically I made this so that:
-- One can share the articles they read in their profile's readme automatically.
+- One can share the articles they read if they want to.
 
 - Plus I haven't seen any implementation where I can view articles of my favourite developers on github so yea :) 
 
-- **Main reason**
+- One of the main reason to start this project is to learn devops side of things. So basically want to a scallable microservice later(basically over-engineering it, leave me alone :) 
+
 > This project is in a very initial state which only consist of a very simple firefox extesion(frontend), an api written in go(backend), a database and CI/CD pipeline to update my README.md. 
 
 ## FireFox Extension
@@ -18,11 +19,11 @@ Basically I made this so that:
 
 - Used ![BookMark API]()
 
-- 
-
 ## Go Microservice
 
-- For now making a simple `go-api` to handle **POST & GETrequest**. 
+- For now making a simple `go-api` to handle **POST & GET request** which is connected to a database. 
+
+> Voh video dekhni hain golang wali
 
 ## Github Actions
 
