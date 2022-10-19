@@ -14,12 +14,20 @@ app.use(function(req, res, next) {
     next();
 });
 
+// sasta databse
+let data;
+
 app.get('/', (req, res) => {
     res.json({"message":"hello world"})
 })
 
+app.get('/getBookmarks', (req,res)=>{
+    res.status(200).json(data)
+})
+
 app.post('/sendBookmarks', (req,res) => {
-    console.log(req.body)
+    data = req.body
+    console.log(data)
     res.status(200).json({"message":"Recieved"})
 })
 
