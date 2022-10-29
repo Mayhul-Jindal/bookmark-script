@@ -1,28 +1,25 @@
 const express = require('express');
+var cors = require('cors')
 const bodyParser = require("body-parser");
 
 const app = express();
+
+// cors
+app.use(cors())
 
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// cors
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
-
 // sasta databse
-let data;
+let data = {};
 
 app.get('/', (req, res) => {
     res.json({"message":"hello world"})
 })
 
 app.get('/getBookmarks', (req,res)=>{
-    res.status(200).json(data)
+    res.status(200).send(data)
 })
 
 app.post('/sendBookmarks', (req,res) => {
