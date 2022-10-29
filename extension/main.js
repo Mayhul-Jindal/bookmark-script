@@ -1,5 +1,4 @@
 // async function countBookmarks(){
-
 //   // This part recursively checks for all existing childrens and updates count to total number of bookmarks
 //   function logItems(bookmarkItem) {
 //     if (bookmarkItem.url) {
@@ -11,7 +10,7 @@
 //       }
 //     }
 //   }
-  
+
 //   function logTree(bookmarkItems) {
 //     logItems(bookmarkItems[0]);
 //   }
@@ -37,54 +36,39 @@
 //     let temp = {
 //       name: bookmark.title,
 //       url: bookmark.url,
-//       topic: parentInfo[0].title
+//       topic: title
 //     }
 //     arrayOfBookmarks.push(temp)
 //   } 
 //   return arrayOfBookmarks
 // }
 
-
-async function getBookmarks(){
-  let bookmarksObject = {}
-  async function logItems(bookmarkItem) {
-    if (bookmarkItem.url) {
-      let temp = {
-        name: bookmarkItem.title,
-        url: bookmarkItem.url,
-      }
-      let parentInfo = await browser.bookmarks.get(bookmarkItem.parentId)
-      if(bookmarksObject[parentInfo[0].title] == undefined){
-        bookmarksObject[parentInfo[0].title] = []
-        bookmarksObject[parentInfo[0].title].push(temp)
-      }else{
-        bookmarksObject[parentInfo[0].title].push(temp)
-      }
+async function logItems(bookmarkItem, b) {
+  if (bookmarkItem.url) {
+    let temp = {
+      name: bookmarkItem.title,
+      url: bookmarkItem.url,
     }
-    if (bookmarkItem.children) {
-      for (child of bookmarkItem.children) {
-        logItems(child);
-      }
+    let parentInfo = await browser.bookmarks.get(bookmarkItem.parentId)
+    let title = parentInfo[0].title
+    title = title.replaceAll(" ", "_")
+
+    if(b[title] == undefined){
+      b[title] = []
+      b[title].push(temp)
+    }else{
+      b[title].push(temp)
     }
   }
-  
-  function logTree(bookmarkItems) {
-    logItems(bookmarkItems[0]);
+  if (bookmarkItem.children) {
+    for (child of bookmarkItem.children) {
+      await logItems(child,b);
+    }
   }
-  
-  function onRejected(error) {
-    console.log(`An error: ${error}`);
-  }
-  
-  let gettingTree = browser.bookmarks.getTree();
-  gettingTree.then(logTree, onRejected);
-
-  return bookmarksObject
-  
 }
 
 async function postReq(path, data){
-  const response = await fetch(`localhost:9999/${path}`, {
+  const response = await fetch(`https://33bd-2401-4900-1c67-48a6-2c02-ad46-3376-6305.in.ngrok.io/${path}`, {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -96,15 +80,12 @@ async function postReq(path, data){
 }
 
 async function handleBookmarkEvent() {
-
-  // // sending bookmarks
-  // let totalBookmarks = await countBookmarks();
-  // let result = await getBookmarks(totalBookmarks)
-  // let response = await postReq("sendBookmarks",result)
-  // console.log(response)
-
-  let result = await getBookmarks()
-  let response = await postReq("sendBookmarks",result)
+  let bookmarksObject = {}  
+  let gettingTree = await browser.bookmarks.getTree();
+  await logItems(gettingTree[0], bookmarksObject)
+  console.log(bookmarksObject)
+  
+  let response = await postReq("sendBookmarks",bookmarksObject)
   console.log(response)
 }
 
