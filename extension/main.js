@@ -68,7 +68,7 @@ async function logItems(bookmarkItem, b) {
 }
 
 async function postReq(path, data){
-  const response = await fetch(`https://33bd-2401-4900-1c67-48a6-2c02-ad46-3376-6305.in.ngrok.io/${path}`, {
+  const response = await fetch(`https://e02e-2401-4900-1c67-48a6-3be4-a24e-9ffe-b176.in.ngrok.io/${path}`, {
     method: 'POST',
     mode: 'cors',
     headers: {
