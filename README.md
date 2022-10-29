@@ -9,7 +9,7 @@ Collects information of your bookmarks in your browser and then update that to y
 
 - One of the main reason to start this project is to learn devops side of things. So basically I want to make my server a `scallable microservice` with `authentication` for the new users using my extension, with their `data stored in a database` all written in `golang`(basically over-engineering it, leave me alone :)
 
-> This project is in a very initial state which only consist of a very simple firefox extesion(frontend), an api written in javascript(backend), and a CI/CD pipeline to update my README.md. 
+> This project is in a very initial state which only consist of a very simple firefox extesion(frontend), an api written in javascript(backend), and a CI/CD pipeline to update my README.md.
 
 ## FireFox Extension
 
@@ -23,14 +23,6 @@ Collects information of your bookmarks in your browser and then update that to y
 
 Made the simplest api which can ever exsist.
 Later will change this to a GO microservice :)
-
-## Github Actions
-
-### workflows
-Github is a plarform for open source projects so when a team manage those project then people can contribute to them. But as the project gets bigger more and more contributors join because of which it can become difficult for the maintainers to main the project. Thus you can automate your workflow using github actions
-
-1. Listen to event
-2. Trigger Workflow
 
 ## Improved Extension
 
