@@ -1,6 +1,6 @@
 # BOOKIT
 
-Collects information of your bookmarks in your browser and then update that to your github profile's readme.md automatically. You can check it out on ![my github profile](https://github.com/Mayhul-Jindal)
+Collects information of your bookmarks in your browser and then update that to your github profile's readme.md automatically. You can check it out on [my github profile](https://github.com/Mayhul-Jindal)
 
 ## Reason to start this:
 - One can share the articles they read if they want to.
