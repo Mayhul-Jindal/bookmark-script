@@ -7,9 +7,7 @@ Collects information of your bookmarks in your browser and then update that to y
 
 - Plus I haven't seen any implementation where I can view articles of my favourite developers on github so yea :) 
 
-- One of the main reason to start this project is to learn devops side of things. So basically I want to make my server a `scallable microservice` with `authentication` for the new users using my extension, with their `data stored in a database` all written in `golang`(basically over-engineering it, leave me alone :)
-
-> This project is in a very initial state which only consist of a very simple firefox extesion(frontend), an api written in javascript(backend), and a CI/CD pipeline to update my README.md.
+> This project is in a very initial state which only consist of a very simple firefox extesion(frontend), an api written in javascript(backend), and a CI/CD pipeline to update my README.md which i have commented out for now.
 
 ## FireFox Extension
 
@@ -19,15 +17,10 @@ Collects information of your bookmarks in your browser and then update that to y
 
 - Used [BookMark API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Work_with_the_Bookmarks_API) to get all the bookmarks of the user
 
-## Javascript API
+## Server
 
-Made the simplest api which can ever exsist.
-Later will change this to a GO microservice :)
+Made the simplest api which can ever exsist which helps serves the bookmarks
 
-## Improved Extension
+## Profile README.md
 
-TODO
-
-## Go Microservice
-
-TODO
+Here used pug templating to update my readme by getting updated bookmarks from the api in a fixed interval. For the fixed interval thing I used github actions.
